@@ -14,7 +14,7 @@ namespace HotwheelsAPI.Controllers
     public class CarController : ControllerBase
     {
         
-        // GET api/<CarController>/all
+        // GET api/car/all
         [HttpGet("all")]
         public JsonResult getAllCars()
         {
@@ -22,29 +22,12 @@ namespace HotwheelsAPI.Controllers
             return new JsonResult(list);
         }
 
-        // GET api/<CarController>/5
+        //GET api/car/{id}
         [HttpGet("{id}")]
-        public string Get(int id)
+        public JsonResult getHotwheel(int id)
         {
-            return "value";
-        }
-
-        // POST api/<CarController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<CarController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<CarController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            var list = CarAzure.getHotwheel(id);
+            return new JsonResult(list);
         }
     }
 }
